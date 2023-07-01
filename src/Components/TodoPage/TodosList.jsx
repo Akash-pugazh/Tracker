@@ -1,21 +1,11 @@
-import React, { useContext } from "react";
-import { TodoContext } from "../../Context/TodoContextProvider";
+import React from "react";
 import TodosCard from "./TodosCard";
 
-function TodosList({ selection }) {
-  const { todo } = useContext(TodoContext);
-  const selectedTodos = todo[selection];
+function TodosList() {
   return (
     <div className="w-full h-full">
-      {selectedTodos.map((data, index) => {
-        return (
-          <TodosCard
-            key={index}
-            data={data}
-            index={index}
-            selection={selection}
-          />
-        );
+      {[].map(() => {
+        return <TodosCard />;
       })}
     </div>
   );
