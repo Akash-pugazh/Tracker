@@ -1,50 +1,43 @@
 import React from "react";
-
+import getDates from "../../Utils/dates";
 const TableComponent = () => {
-  // const generateDates = count => {
-  //   const dates = [];
-  //   const today = new Date();
-  //   for (let i = count - 1; i >= 0; i--) {
-  //     const date = new Date();
-  //     date.setDate(today.getDate() - i);
-  //     dates.push(date.toISOString().slice(0, 10));
-  //   }
-  //   return dates.reverse();
-  // };
-
-  // const dates = generateDates(7);
-
-  const days = ["Today", "Yesteraday", "DBYesterday"];
-  const habits = ["Workout", "Meditate", "Code", "WatchAnime"];
+  const primaryDates = getDates();
+  const habits = ["Workout", "Meditate", "Code", "WatchAnime", "Bat"];
   return (
-    <table className="w-full border border-collapse border-black text-lg">
-      <thead className="w-full">
-        <tr>
-          <th className="font-medium border border-black p-2">Habit</th>
-          {days.map((day, index) => (
-            <th key={index} className="font-medium border border-black p-2">
-              {day}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {habits.map((habit, index) => (
-          <tr key={index}>
-            <th className="border font-normal border-black text-center">
-              {habit}
-            </th>
-            {days.map((day, index) => (
-              <React.Fragment key={index}>
-                <td className="border border-black text-center">
-                  <input type="checkbox" className="checked:bg-blue-700" />
-                </td>
-              </React.Fragment>
+    <div className="Table-Wrapper w-full h-full">
+      <table className="w-full h-full text-sm">
+        <caption className="text-left mb-1">Checkout here !</caption>
+        <thead className="w-full">
+          <tr className="w-full">
+            <th className="font-medium border border-black p-2 w-[30%]">Habit</th>
+            {primaryDates.map(primaryDate => (
+              <th
+                key={primaryDate.date}
+                className="font-medium border border-black p-2 w-[10%]"
+              >
+                {primaryDate.day}
+              </th>
             ))}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {habits.map((habit, index) => (
+            <tr key={index}>
+              <th className="border font-normal border-black text-center">
+                {habit}
+              </th>
+              {primaryDates.map(primaryDate => (
+                <React.Fragment key={primaryDate.day}>
+                  <td className="border border-black text-center">
+                    <input type="checkbox" />
+                  </td>
+                </React.Fragment>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

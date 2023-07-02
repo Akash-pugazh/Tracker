@@ -3,8 +3,8 @@ import Todos from "../Components/TodoPage/Todos";
 import Button from "../Components/Button";
 function TodosPage() {
   return (
-    <section className="w-screen h-[90%] px-2 py-1 text-center lg:px-4">
-      <div className="h-[15%] border-2 border-black select-none lg:h-[12%]">
+    <section className="w-screen h-[90%] px-2 py-1 lg:px-4">
+      <div className="h-[15%] w-full border-2 border-black select-none font-semibold lg:h-[15%] md:h-[15%]">
         <h1 className="h-1/2 bg-black text-white text-center grid place-items-center">
           TodosPage
         </h1>
@@ -15,15 +15,15 @@ function TodosPage() {
         </div>
       </div>
 
-      <div className="h-[10%] py-3 w-full flex justify-between lg:w-1/2 lg:m-auto lg:h-[8%]">
+      <div className="h-[10%] py-3 w-full flex justify-between  ">
         <input
           className="h-full w-[70%] border-b-2 border-black focus:outline-none text-2xl"
           type="text"
         />
-        <Button value="Search" />
+        <Button value="Search" className="p-0" />
       </div>
 
-      <div className="Todos-Component h-[75%] lg:h-[80%]">
+      <div className="Todos-Component h-[75%] w-full lg:h-[70%]">
         <Todos />
       </div>
     </section>
