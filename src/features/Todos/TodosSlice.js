@@ -17,6 +17,7 @@ const TodosSlice = createSlice({
             todo,
             timeRange,
             createdAt,
+            completed: false,
           },
         };
       },
@@ -45,9 +46,17 @@ const TodosSlice = createSlice({
         if (indexToDelete !== -1) state.todosList.splice(indexToDelete, 1);
       },
     },
+    completeTodo: {
+      reducer: (state, action) => {
+        state.todosList.filter(element => {
+          if (element.id === action.payload) element["completed"] = true;
+        });
+      },
+    },
   },
 });
 
-export const { addTodo, editTodo, deleteTodo } = TodosSlice.actions;
+export const { addTodo, editTodo, deleteTodo, completeTodo } =
+  TodosSlice.actions;
 
 export default TodosSlice.reducer;

@@ -8,7 +8,11 @@ function TodosList({ todosList }) {
         todosList.map(data => {
           return (
             <React.Fragment key={data.id}>
-              <TodosCard id={data.id} todo={data.todo} />
+              <TodosCard
+                completed={data.completed}
+                id={data.id}
+                todo={data.todo}
+              />
             </React.Fragment>
           );
         })}
