@@ -61,7 +61,7 @@ function TodosPage() {
 
   const todayTodos = todosList.filter(el => el.timeRange === "today");
   const weeklyTodos = todosList.filter(el => el.timeRange === "weekly");
-  const monthlyTodos = todosList.filter(el => el.timeRange === "monthly");
+  const monthlyTodos = todosList.filter(el => el.timeRange === "monthly");  
 
   const todoStatusCounts = {
     todayCompleted: todayTodos.filter(el => el.completed === true).length,
