@@ -40,8 +40,26 @@ const HabitsSlice = createSlice({
         });
       },
     },
+    unCheckHabit: {
+      prepare: (habitId, date) => {
+        return {
+          payload: {
+            habitId,
+            date,
+          },
+        };
+      },
+      reducer: (state, action) => {
+        state.habitsList.filter(el => {
+          if (el.id === action.payload.habitId) {
+            const removeIndex = el.checkedDates.indexOf(action.payload.date);
+            if (removeIndex > -1) el.checkedDates.splice(removeIndex, 1);
+          }
+        });
+      },
+    },
   },
 });
 
-export const { addHabit, checkHabit } = HabitsSlice.actions;
+export const { addHabit, checkHabit, unCheckHabit } = HabitsSlice.actions;
 export default HabitsSlice.reducer;

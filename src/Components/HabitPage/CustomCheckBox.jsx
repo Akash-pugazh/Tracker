@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { checkHabit } from "../../features/Habits/HabitsSlice";
+import { checkHabit, unCheckHabit } from "../../features/Habits/HabitsSlice";
 
-function CustomCheckBox({ date, habit, habitId, className, ...rest }) {
-  const [isChecked, setIsChecked] = useState(false);
-
+function CustomCheckBox({ date, checked, habit, habitId, className, ...rest }) {
+  const [isChecked, setIsChecked] = useState(checked);
   const dispatch = useDispatch();
+
+  console.log(date);
   function handleCheckedChange(habitId, date) {
     setIsChecked(isChecked => !isChecked);
     if (!isChecked) {
       dispatch(checkHabit(habitId, date));
     } else {
-      // Todo: Uncheck Habit
-      return;
+      dispatch(unCheckHabit(habitId, date));
     }
   }
   return (
@@ -20,7 +20,7 @@ function CustomCheckBox({ date, habit, habitId, className, ...rest }) {
       className={className}
       {...rest}
       type="checkbox"
-      checked={isChecked}
+      checked={checked}
       onChange={() => handleCheckedChange(habitId, date)}
     />
   );

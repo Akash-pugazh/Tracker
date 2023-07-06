@@ -1,10 +1,10 @@
 import React from "react";
-import CustomCheckBox from "./CustomCheckBox";
+import Habit from "../HabitPage/Habit";
 import getDates from "../../Utils/dates";
 
 const TableComponent = ({ habitsList }) => {
   const primaryDates = getDates();
-  console.log(primaryDates);
+
   return (
     <div className="Table-Wrapper w-full h-full px-1 flex justify-center">
       <table className="w-full text-sm border-collapse lg:w-1/2">
@@ -26,25 +26,13 @@ const TableComponent = ({ habitsList }) => {
         </thead>
         <tbody className="w-full">
           {habitsList.map(el => (
-            <tr key={el.id}>
-              <th className="overflow-hidden text- border border-black font-semibold">
-                <div className="w-40 text-center m-auto overflow-hidden">
-                  {el.habit}
-                </div>
-              </th>
-              {primaryDates.map((primaryDate, index) => (
-                <td
-                  key={index}
-                  className="py-4 border border-black text-center"
-                >
-                  <CustomCheckBox
-                    habit={el.habit}
-                    habitId={el.id}
-                    date={primaryDate.date}
-                  />
-                </td>
-              ))}
-            </tr>
+            <Habit
+              key={el.id}
+              habit={el.habit}
+              habitId={el.id}
+              habitCheckedDates={el.checkedDates}
+              primaryDates={primaryDates}
+            />
           ))}
         </tbody>
       </table>

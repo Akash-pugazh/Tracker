@@ -12,8 +12,9 @@ function Streaks({ habitsList }) {
           <StreakCard
             key={el.id}
             habit={el.habit}
+            checkedDates={el.checkedDates}
             streakCount={el.streakCount}
-          />  
+          />
         ))}
       </div>
     </div>
