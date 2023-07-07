@@ -6,7 +6,6 @@ function StreakCard({ habit, checkedDates }) {
   const streak = calculateStreakCount(formattedCheckedDates);
   return (
     <div
-      onClick={{}}
       style={{
         boxShadow: "rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px",
       }}

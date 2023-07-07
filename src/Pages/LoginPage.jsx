@@ -1,26 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../Components/Button";
+import { updateDetails } from "../features/Users/UserSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 function LoginPage() {
+  const [details, setDetails] = useState({
+    name: "",
+    email: "",
+  });
+
+  const { loggedIn } = useSelector(state => state.user);
+  const dispatch = useDispatch();
+  function handleSubmit(e) {
+    e.preventDefault();
+    const { name, email } = details;
+    dispatch(updateDetails(name, email));
+    setDetails({ ...details, name: "", email: "" });
+    window.location.href = "/Habits";
+  }
+
+  if (loggedIn)
+    return false
+
   return (
     <div className="w-screen h-[80%] flex justify-center items-center lg:px-4">
       <form
-        onSubmit={e => e.preventDefault()}
+        onSubmit={handleSubmit}
         className="border bg-black rounded-lg flex flex-col items-center justify-center p-8"
       >
         <h1 className="font-semibold text-xl mb-5 text-white ">
           <span className="bg-blue-400 p-2 rounded mr-2">Sign in</span>to your
           account
         </h1>
-        <label className="text-xl pb-2 text-white ">Email</label>
+        <label className="text-xl pb-2 text-white ">Full Name</label>
         <input
           type="text"
           className="h-10 px-2 border border-black rounded-md mb-4"
+          onChange={e => setDetails({ ...details, name: e.target.value })}
         />
-        <label className="text-xl pb-2 text-white ">Password</label>
+        <label className="text-xl pb-2 text-white ">Email</label>
         <input
-          type="password"
+          type="email"
           className="h-10 px-2 border border-black rounded-md mb-5"
+          onChange={e => setDetails({ ...details, email: e.target.value })}
         />
         <Button
           value="Login"

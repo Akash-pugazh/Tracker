@@ -58,8 +58,24 @@ const HabitsSlice = createSlice({
         });
       },
     },
+    deleteHabit: {
+      prepare: habitId => {
+        return {
+          payload: {
+            habitId,
+          },
+        };
+      },
+      reducer: (state, action) => {
+        const indexToDelete = state.habitsList.findIndex(
+          el => el.id === action.payload.habitId
+        );
+        if (indexToDelete !== -1) state.habitsList.splice(indexToDelete, 1);
+      },
+    },
   },
 });
 
-export const { addHabit, checkHabit, unCheckHabit } = HabitsSlice.actions;
+export const { addHabit, checkHabit, unCheckHabit, deleteHabit } =
+  HabitsSlice.actions;
 export default HabitsSlice.reducer;

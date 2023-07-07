@@ -1,10 +1,10 @@
 import React from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import IconButton from "../IconButton";
 import { MdEdit, MdDelete } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   editTodo,
   deleteTodo,
