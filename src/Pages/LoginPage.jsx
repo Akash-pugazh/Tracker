@@ -16,11 +16,9 @@ function LoginPage() {
     const { name, email } = details;
     dispatch(updateDetails(name, email));
     setDetails({ ...details, name: "", email: "" });
-    window.location.href = "/Habits";
   }
 
-  if (loggedIn)
-    return false
+  if (loggedIn) return <div className="h-[90%] flex justify-center items-center text-base">You are Successfully Logged In ✅ </div>;
 
   return (
     <div className="w-screen h-[80%] flex justify-center items-center lg:px-4">
