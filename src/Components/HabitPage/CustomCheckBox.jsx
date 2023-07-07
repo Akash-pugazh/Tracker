@@ -6,7 +6,6 @@ function CustomCheckBox({ date, checked, habit, habitId, className, ...rest }) {
   const [isChecked, setIsChecked] = useState(checked);
   const dispatch = useDispatch();
 
-  console.log(date);
   function handleCheckedChange(habitId, date) {
     setIsChecked(isChecked => !isChecked);
     if (!isChecked) {

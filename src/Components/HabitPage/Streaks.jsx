@@ -7,13 +7,12 @@ function Streaks({ habitsList }) {
       <h1 className="rounded-md font-semibold bg-black text-white text-center py-1">
         Your Streaks
       </h1>
-      <div className="grid grid-cols-5 place-items-center px-2 pt-2 lg:grid-cols-10">
+      <div>
         {habitsList.map(el => (
           <StreakCard
             key={el.id}
             habit={el.habit}
             checkedDates={el.checkedDates}
-            streakCount={el.streakCount}
           />
         ))}
       </div>
