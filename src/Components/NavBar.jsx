@@ -30,7 +30,7 @@ function NavBar() {
   return (
     <nav className="w-screen h-[10%] flex justify-between items-center p-1 select-none lg:px-4">
       <NavLinkButton
-        value="Tracker"
+        value="Habitica"
         setActive={setActive}
         homePageButton={true}
       />
